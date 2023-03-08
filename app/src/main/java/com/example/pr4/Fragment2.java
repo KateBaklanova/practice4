@@ -3,9 +3,11 @@ package com.example.pr4;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,6 +25,7 @@ import java.util.Random;
 public class Fragment2 extends Fragment {
 
 
+    private static final String TAG = "MyApp";
     public Fragment2() {
         super(R.layout.fragment2);
     }
@@ -41,6 +44,14 @@ public class Fragment2 extends Fragment {
         options.add("Мини игры");
         ArrayAdapter<String> adapter1 = new ArrayAdapter(contentView.getContext(), android.R.layout.simple_list_item_1, options);
         listView.setAdapter(adapter1);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Log.d(TAG, "itemClick: position = " + position + ", id = " + id);
+            }
+        });
+
         return contentView;
     }
 
