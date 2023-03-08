@@ -2,6 +2,8 @@ package com.example.pr4;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,7 @@ public class ExampleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .setReorderingAllowed(true)
@@ -42,4 +45,6 @@ public class ExampleActivity extends AppCompatActivity {
         transaction.replace(R.id.fragment_container_view, fragment3);
         transaction.commit();
     }
+
+
 }
