@@ -53,9 +53,9 @@ public class Fragment3 extends Fragment {
     }
 
     private void setInitialData(){
-        words.add(new Words ("Цвета", R.drawable.dot));
-        words.add(new Words ("Животные", R.drawable.dot));
-        words.add(new Words ("Цветы", R.drawable.dot));
+        for (int i=0; i<=200; i++){
+            words.add(new Words ("item"+i, R.drawable.dot));
+        }
     }
 
 }
