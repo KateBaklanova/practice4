@@ -1,37 +1,25 @@
 package com.example.pr4;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentResultListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
-import android.os.Bundle;
-import android.view.View;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 
-public class Fragment3 extends Fragment {
+public class Fragment3 extends Fragment implements WordsAdapter.OnNoteListener {
 
-
+    private static final String TAG = "MyApp";
     public Fragment3() {
         super(R.layout.fragment3);
     }
@@ -41,14 +29,14 @@ public class Fragment3 extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // начальная инициализация списка
+
+
         setInitialData();
         View contentView = inflater.inflate(R.layout.fragment3, container, false);
         RecyclerView recyclerView = contentView.findViewById(R.id.list);
-        // создаем адаптер
-        WordsAdapter adapter = new WordsAdapter(contentView.getContext(), words);
-        // устанавливаем для списка адаптер
+        WordsAdapter adapter = new WordsAdapter(contentView.getContext(), words, this);
         recyclerView.setAdapter(adapter);
+
         return contentView;
     }
 
@@ -58,5 +46,9 @@ public class Fragment3 extends Fragment {
         }
     }
 
+    @Override
+    public void onNoteClick(int position) {
+        words.get(position);
+        Log.d(TAG, "itemClick "+ position);
+    }
 }
-

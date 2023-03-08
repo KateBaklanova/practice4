@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -33,6 +34,7 @@ public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+
         View contentView = inflater.inflate(R.layout.fragment2, container, false);
 
         ListView listView = (ListView) contentView.findViewById(R.id.listView);
@@ -46,9 +48,11 @@ public class Fragment2 extends Fragment {
         listView.setAdapter(adapter1);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "itemClick: position = " + position + ", id = " + id);
+                Toast toast = Toast.makeText(getActivity().getApplicationContext(),
+                        "Тост 2", Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
 
